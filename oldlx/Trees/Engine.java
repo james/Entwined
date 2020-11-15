@@ -181,6 +181,8 @@ abstract class Engine {
 
     registerPatternController("Pond", new Pond(lx));
     registerPatternController("Planes", new Twister(lx));
+
+    registerPatternController("James Test", new JamesTest(lx));
   }
 
   void registerIPadEffects() {
@@ -275,6 +277,8 @@ abstract class Engine {
     // Grant Patterson Patterns
     patterns.add(new Pond(lx));
     patterns.add(new Planes(lx));
+
+    patterns.add(new JamesTest(lx));
   }
 
   LXPattern[] getPatternListForChannels() {
@@ -329,6 +333,8 @@ abstract class Engine {
     
     registerPattern(new Pond(lx), "");
     registerPattern(new Planes(lx), "");
+
+    registerPattern(new JamesTest(lx), "");
   }
 
   void registerOneShotTriggerables() {
