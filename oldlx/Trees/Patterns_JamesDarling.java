@@ -17,8 +17,6 @@ class JamesTest extends TSPattern {
   final BasicParameter waveSlope = new BasicParameter("waveSlope", 360, 1, 720);
   final SawLFO wave = new SawLFO(0, 360, speedParam.getValuef() * speedMult);
 
-  // add speed, wave width
-
   // Constructor and inital setup
   // Remember to use addParameter and addModulator if you're using Parameters or sin waves
   JamesTest(LX lx) {
@@ -33,19 +31,17 @@ class JamesTest extends TSPattern {
     }
   }
 
-
   // This is the pattern loop, which will run continuously via LX
   public void run(double deltaMs) {
     wave.setPeriod(speedParam.getValuef() * speedMult);
 
-      // Use a for loop here to set the cube colors
-      for (Cube cube : model.cubes) {
-        colors[cube.index] = lx.hsb( (float)( (wave.getValuef() + waveSlope.getValuef() * Utils.map(cube.x, minx, maxx) ) % 360), 100, 100);
-      }
+    // Use a for loop here to set the cube colors
+    for (Cube cube : model.cubes) {
+      colors[cube.index] = lx.hsb( (float)( (wave.getValuef() + waveSlope.getValuef() * Utils.map(cube.x, minx, maxx) ) % 360), 100, 100);
+    }
 
-
-      for (ShrubCube cube : model.shrubCubes) {
-        colors[cube.index] = lx.hsb( (float)( (wave.getValuef() + waveSlope.getValuef() * Utils.map(cube.x, minx, maxx) ) % 360), 100, 100);
-      }
+    for (ShrubCube cube : model.shrubCubes) {
+      colors[cube.index] = lx.hsb( (float)( (wave.getValuef() + waveSlope.getValuef() * Utils.map(cube.x, minx, maxx) ) % 360), 100, 100);
+    }
   }
 }
